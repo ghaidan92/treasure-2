@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import withAuth from './withAuth';
 import API from '../utils/API';
+import ItemInputCard from "./ItemInputCard.js";
 import { Link } from 'react-router-dom';
 
 class Profile extends Component {
@@ -25,7 +26,10 @@ class Profile extends Component {
         <h1>On the profile page!</h1>
         <p>Username: {this.state.username}</p>
         <p>Email: {this.state.email}</p>
+        <ItemInputCard />
         <Link to="/">Go home</Link>
+     
+        
       </div>
     )
   }
