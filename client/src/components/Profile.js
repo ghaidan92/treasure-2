@@ -21,12 +21,13 @@ class Profile extends Component {
 
   render() {
     return (
-      <div className="container Profile">
-        <h1>On the profile page!</h1>
-        <p>Username: {this.state.username}</p>
-        <p>Email: {this.state.email}</p>
-        <Link to="/">Go home</Link>
-      </div>
+        <div className="container Profile">
+         <h1>On the profile page!</h1>
+          <p>Username: {this.state.username}</p>
+          <p>Email: {this.state.email}</p>
+          <Link to="/">Go home</Link>
+        </div>
+     
     )
   }
 }
