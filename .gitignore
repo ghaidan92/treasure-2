@@ -1,6 +1,10 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
 # dependencies
+<<<<<<< HEAD
+=======
+node_modules/
+>>>>>>> e92f0e2bbf5cb7686dc397f9854546deeb05ca8f
 
 # testing
 /coverage
