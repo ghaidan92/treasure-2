@@ -3,6 +3,9 @@
 import React from 'react';
  
 import Modal from 'react-modal';
+import {Link} from 'react-router-dom';
+import AuthService from './../AuthService';
+import API from '../../utils/API';
 import './register.css'
 // import { groupPatternsByBaseDirectory } from 'fast-glob/out/managers/tasks';
 
@@ -25,6 +28,7 @@ class Register extends React.Component {
 
   constructor(props) {
     super(props);
+    this.Auth = new AuthService();
 
     this.state = {
       modalIsOpen: false,
@@ -40,6 +44,25 @@ class Register extends React.Component {
     this.afterOpenModal = this.afterOpenModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
   }
+
+  componentWillMount() {
+    if (this.Auth.loggedIn()) {
+      this.props.history.replace('/');
+    }
+  }
+
+  handleFormSubmit = event => {
+    event.preventDefault();
+    API.signUpUser(this.state.username, this.state.email, this.state.password)
+      .then(res => {
+        // once the user has signed up
+        // send them to the login page
+        this.closeModal();
+       
+        this.props.history.replace('/login');
+      })
+      .catch(err => alert(err));
+  };
 
   handleInputChange = e => {
     const {name, value} = e.target;
@@ -146,7 +169,7 @@ class Register extends React.Component {
             
               </div>
             
-              <button className="doneButton">Done</button>
+              <button className="doneButton" onClick={this.handleFormSubmit}>Done</button>
                 
             </form>
             </div>
