@@ -140,7 +140,7 @@ class Register extends React.Component {
               <div className="userInputTitle">Email:</div>
               <input className="informationInupt"
                 name="email"
-                placeholder="golddroger@gmail.com"
+                placeholder="goldroger@gmail.com"
                 value={this.state.email} 
                 onChange={this.handleInputChange} />
               </div>
