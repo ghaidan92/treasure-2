@@ -53,13 +53,13 @@ class Register extends React.Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    API.signUpUser(this.state.username, this.state.email, this.state.password)
+    API.signUpUser(this.state.username, this.state.email, this.state.password, this.state.firstname, this.state.lastname, this.state.zipcode )
       .then(res => {
         // once the user has signed up
         // send them to the login page
         this.closeModal();
-       
-        this.props.history.replace('/login');
+        
+        // this.props.history.replace('/login');
       })
       .catch(err => alert(err));
   };
@@ -140,7 +140,7 @@ class Register extends React.Component {
               <div className="userInputTitle">Email:</div>
               <input className="informationInupt"
                 name="email"
-                placeholder="golddroger@gmail.com"
+                placeholder="goldroger@gmail.com"
                 value={this.state.email} 
                 onChange={this.handleInputChange} />
               </div>
