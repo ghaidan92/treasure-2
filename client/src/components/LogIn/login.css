@@ -1,0 +1,64 @@
+.logInButton{
+    color:black;
+    font-size: 3vw;
+    float: right;
+    margin-top: -4vw;
+    margin-right: 22vw;
+}
+.bodyOfRegLogIn {
+    margin-left:0vw;
+    margin-right:3vw;
+}
+
+.registerModalLogIn {
+    width:30vw;
+    height:50vh;
+    padding-left:3vw;
+
+
+}
+.treasureMessageLogIn{
+    color:black;
+    font-size: 6vh;
+    margin-bottom:2.5vh;
+    text-align: center;
+}
+.leftColumnLogIn{
+    float:left;
+}
+.rightColumnLogIn{
+    float:left;
+}
+
+.xButtonLogIn {
+    color:black;
+    font-weight: 900;
+    font-size: 5vh;
+    float:right;
+   border:none; 
+  
+}
+
+.userInputTitleLogIn{
+    color:black;
+    font-weight: 900;
+    font-size: 4vh;
+    margin-bottom:.50vh;
+    margin-right:3vw;
+}
+
+.doneButtonLogIn{
+    color:black;
+    font-weight: 900;
+    font-size: 3vh;
+   
+ 
+   
+}
+.informationInuptLogIn {
+    border-radius: 5px;  
+    font-weight: 900;
+    font-size: 4vh;
+    margin-bottom:2vh;
+    margin-right:3vw;
+}
