@@ -1,6 +1,6 @@
 import React from 'react';
 import Modal from 'react-modal';
-import axios from 'axios';
+import Axios from 'axios';
 
 // import { groupPatternsByBaseDirectory } from 'fast-glob/out/managers/tasks';
 
