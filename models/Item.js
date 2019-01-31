@@ -19,6 +19,9 @@ const ItemSchema = new Schema({
     type: Number,
     required: true
   },
+  catagories: {
+    type: String
+  },
   createdAt: {
     type: Date,
     default: Date.now

@@ -1,5 +1,5 @@
 import React from 'react';
-
+import API from '../utils/API'
 import Modal from 'react-modal';
 
 // import { groupPatternsByBaseDirectory } from 'fast-glob/out/managers/tasks';
@@ -65,6 +65,25 @@ class ItemInputCard extends React.Component {
         this.setState({ modalIsOpen: true });
     }
 
+    handleAddItemSubmit = e=>{
+        e.preventDefault()
+        console.log(this.props);
+        
+        var body = {
+            itemName: this.state.username,
+            itemDescription: this.state.password,
+            userId: this.props.userId
+        }
+        console.log(body)
+        API.postItem(body)
+        this.setState({
+            username: "",
+            password: ""
+        })
+    }
+
+    
+
     afterOpenModal() {
         // references are now sync'd and can be accessed.
         this.subtitle.style.color = 'black';
@@ -92,7 +111,7 @@ class ItemInputCard extends React.Component {
                         <div className="bodyOfRegLogIn">
                             <h2 className="treasureMessageLogIn" ref={subtitle => this.subtitle = subtitle}>Booty</h2>
 
-                            <form>
+                            <form onSubmit={this.handleAddItemSubmit}>
 
 
                                 <div className="userInputTitleLogIn">Username:</div>

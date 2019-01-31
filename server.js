@@ -40,7 +40,7 @@ app.post('/api/login', (req, res) => {
     user.verifyPassword(req.body.password, (err, isMatch) => {
       if(isMatch && !err) {
         let token = jwt.sign({ id: user._id, email: user.email }, 'all sorts of code up in here', { expiresIn: 129600 }); // Sigining the token
-        res.json({success: true, message: "Token Issued!", token: token, user: user},console.log(token) );
+        res.json({success: true, message: "Token Issued!", token: token, user: user} );
         
       } else {
         res.status(401).json({success: false, message: "Authentication failed. Wrong password."});
@@ -50,7 +50,7 @@ app.post('/api/login', (req, res) => {
 });
 
 //POST ITEMS ROUTE
-app.post('/api/user/:id', isAuthenticated, (req, res) => {
+app.post('/api/additem/', isAuthenticated, (req, res) => {
   db.Item.create(req.body)
     .then(data => res.json(data))
     .catch(err => res.status(400).json(err));
