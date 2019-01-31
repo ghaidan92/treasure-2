@@ -9,15 +9,13 @@ const ItemSchema = new Schema({
   },
   itemDescription: {
     type: String,
-    required: true,
     trim: true,
   },
   userId: {
     type: String
   },
   location: {
-    type: Number,
-    required: true
+    type: Number
   },
   catagories: {
     type: String
