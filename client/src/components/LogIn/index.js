@@ -120,10 +120,10 @@ class LogIn extends React.Component {
               <form>
 
 
-                <div className="userInputTitleLogIn">Username:</div>
+                <div className="userInputTitleLogIn">Email:</div>
                 <input className="informationInuptLogIn"
                   name="email"
-                  placeholder="KingOfThePirates"
+                  placeholder="KingOfThePirates@gmail.com"
                   onChange={this.handleInputChange}
                   value={this.state.email} />
 
