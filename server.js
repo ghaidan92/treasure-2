@@ -50,7 +50,7 @@ app.post('/api/login', (req, res) => {
 });
 
 //POST ITEMS ROUTE
-app.post('/api/additem/', isAuthenticated, (req, res) => {
+app.post('/api/additem', isAuthenticated, (req, res) => {
   db.Item.create(req.body)
     .then(data => res.json(data))
     .catch(err => res.status(400).json(err));
