@@ -2,7 +2,10 @@
 
 # dependencies
 node_modules/
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2d317b63b6c0ac01a3244499c2cdaf9178d8f775
 # testing
 /coverage
 
