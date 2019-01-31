@@ -1,6 +1,6 @@
 import React from 'react';
+import API from '../utils/API'
 import Modal from 'react-modal';
-import Axios from 'axios';
 
 // import { groupPatternsByBaseDirectory } from 'fast-glob/out/managers/tasks';
 
@@ -47,7 +47,7 @@ class ItemInputCard extends React.Component {
         });
     }
 
-    postItem = (e) => {
+    handlePostItem = (e) => {
         e.preventDefault()
         const { itemName, itemDescription, itemPicture, username } = this.state;
         
@@ -58,6 +58,13 @@ class ItemInputCard extends React.Component {
             username,
         }
        console.log(newItem)
+        API.postItem(newItem)
+        this.setState({
+            itemName: "",
+            itemDescription: "",
+            itemPicture: "",
+            username:""
+        })
 
     }
         
@@ -79,6 +86,20 @@ class ItemInputCard extends React.Component {
     openModal() {
         this.setState({ modalIsOpen: true });
     }
+
+    // handleAddItemSubmit = e=>{
+    //     e.preventDefault()
+    //     console.log(this.props);
+        
+    //     var body = {
+    //         itemName: this.state.username,
+    //         itemDescription: this.state.password,
+    //         userId: this.props.userId
+    //     }
+        
+    // }
+
+    
 
     afterOpenModal() {
         // references are now sync'd and can be accessed.
@@ -107,7 +128,7 @@ class ItemInputCard extends React.Component {
                         <div className="bodyOfRegLogIn">
                             <h2 className="treasureMessageLogIn" ref={subtitle => this.subtitle = subtitle}>List your Booty!</h2>
 
-                            <form>
+                            <form onSubmit={this.handlePostItem}>
 
 
                                 <div className="userInputTitleLogIn">Username:</div>
@@ -141,7 +162,7 @@ class ItemInputCard extends React.Component {
 
 
 
-                                <button className="doneButtonLogIn" onClick={this.postItem}>Post Item</button>
+                                <button className="doneButtonLogIn" onClick={this.handlePostItem}>Post Item</button>
 
                             </form>
                         </div>

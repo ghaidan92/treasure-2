@@ -13,9 +13,12 @@ class Profile extends Component {
 
   componentDidMount() {
     API.getUser(this.props.user.id).then(res => {
+      console.log(res);
+      
       this.setState({
         username: res.data.username,
-        email: res.data.email
+        email: res.data.email,
+        userId: res.data._id
       })
     });
   }
@@ -26,7 +29,9 @@ class Profile extends Component {
         <h1>On the profile page!</h1>
         <p>Username: {this.state.username}</p>
         <p>Email: {this.state.email}</p>
-        <ItemInputCard />
+        <ItemInputCard
+          userId={this.state.userId}
+        />
         <Link to="/">Go home</Link>
      
         

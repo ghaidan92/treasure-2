@@ -40,12 +40,20 @@ app.post('/api/login', (req, res) => {
     user.verifyPassword(req.body.password, (err, isMatch) => {
       if(isMatch && !err) {
         let token = jwt.sign({ id: user._id, email: user.email }, 'all sorts of code up in here', { expiresIn: 129600 }); // Sigining the token
-        res.json({success: true, message: "Token Issued!", token: token, user: user});
+        res.json({success: true, message: "Token Issued!", token: token, user: user} );
+        
       } else {
         res.status(401).json({success: false, message: "Authentication failed. Wrong password."});
       }
     });
   }).catch(err => res.status(404).json({success: false, message: "User not found", error: err}));
+});
+
+//POST ITEMS ROUTE
+app.post('/api/additem/', isAuthenticated, (req, res) => {
+  db.Item.create(req.body)
+    .then(data => res.json(data))
+    .catch(err => res.status(400).json(err));
 });
 
 // SIGNUP ROUTE
@@ -58,13 +66,15 @@ app.post('/api/signup', (req, res) => {
 // Any route with isAuthenticated is protected and you need a valid token
 // to access
 app.get('/api/user/:id', isAuthenticated, (req, res) => {
-  db.User.findById(req.params.id).then(data => {
+  db.User.findById(req.params.id)
+  .then(data => {
     if(data) {
       res.json(data);
     } else {
       res.status(404).send({success: false, message: 'No user found'});
     }
-  }).catch(err => res.status(400).send(err));
+  })
+  .catch(err => res.status(400).send(err));
 });
 
 // Serve up static assets (usually on heroku)
