@@ -1,0 +1,64 @@
+.signUpButton{
+    color:black;
+    float:right;
+    font-size: 3vw;
+    margin-top: -4vw;
+    margin-right: 6vw;
+}
+.bodyOfReg {
+    margin-left:3vw;
+    margin-right:3vw;
+}
+
+.registerModal {
+    width:70vw;
+    height:70vh;
+    padding-left:3vw;
+
+
+}
+.treasureMessage{
+    color:black;
+    font-size: 6vh;
+    margin-bottom:2.5vh;
+    text-align: center;
+}
+.leftColumn{
+    float:left;
+}
+.rightColumn{
+    float:left;
+}
+
+.xButton {
+    color:black;
+    font-weight: 900;
+    font-size: 5vh;
+    float:right;
+   border:none; 
+  
+}
+
+.userInputTitle{
+    color:black;
+    font-weight: 900;
+    font-size: 4vh;
+    margin-bottom:.50vh;
+    margin-right:3vw;
+}
+
+.doneButton{
+    color:black;
+    font-weight: 900;
+    font-size: 3vh;
+   
+ 
+   
+}
+.informationInupt {
+    border-radius: 5px;  
+    font-weight: 900;
+    font-size: 4vh;
+    margin-bottom:2vh;
+    margin-right:3vw;
+}
