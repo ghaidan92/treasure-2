@@ -29,7 +29,7 @@ class ItemInputCard extends React.Component {
             itemName: '',
             itemDescription: '',
             itemPicture: '',
-            Username:''
+            username: ''
 
         };
 
@@ -41,11 +41,33 @@ class ItemInputCard extends React.Component {
     handleInputChange = e => {
         const { name, value } = e.target;
         //the way the console log is located it looks like it is 1 letter behing but really it is not
-        console.log(this.state)
+        // console.log(this.state)
         this.setState({
             [name]: value
         });
     }
+
+    handlePostItem = (e) => {
+        e.preventDefault()
+        const { itemName, itemDescription, itemPicture, username } = this.state;
+        
+        const newItem = {
+            itemName, 
+            itemDescription,
+            itemPicture,
+            username,
+        }
+       console.log(newItem)
+        API.postItem(newItem)
+        this.setState({
+            itemName: "",
+            itemDescription: "",
+            itemPicture: "",
+            username:""
+        })
+
+    }
+        
     //idea for what to do on submit
     // handleFormSubmit = e => {
     //     e.preventDefault();
@@ -65,22 +87,17 @@ class ItemInputCard extends React.Component {
         this.setState({ modalIsOpen: true });
     }
 
-    handleAddItemSubmit = e=>{
-        e.preventDefault()
-        console.log(this.props);
+    // handleAddItemSubmit = e=>{
+    //     e.preventDefault()
+    //     console.log(this.props);
         
-        var body = {
-            itemName: this.state.username,
-            itemDescription: this.state.password,
-            userId: this.props.userId
-        }
-        console.log(body)
-        API.postItem(body)
-        this.setState({
-            username: "",
-            password: ""
-        })
-    }
+    //     var body = {
+    //         itemName: this.state.username,
+    //         itemDescription: this.state.password,
+    //         userId: this.props.userId
+    //     }
+        
+    // }
 
     
 
@@ -109,33 +126,46 @@ class ItemInputCard extends React.Component {
                         <br />
                         <br />
                         <div className="bodyOfRegLogIn">
-                            <h2 className="treasureMessageLogIn" ref={subtitle => this.subtitle = subtitle}>Booty</h2>
+                            <h2 className="treasureMessageLogIn" ref={subtitle => this.subtitle = subtitle}>List your Booty!</h2>
 
-                            <form onSubmit={this.handleAddItemSubmit}>
+                            <form onSubmit={this.handlePostItem}>
 
 
                                 <div className="userInputTitleLogIn">Username:</div>
                                 <input className="informationInuptLogIn"
                                     name="username"
-                                    placeholder="KingOfThePirates"
+                                    placeholder="Your username"
                                     onChange={this.handleInputChange}
                                     value={this.state.username} />
 
-                                <div className="userInputTitleLogIn">Password:</div>
+                                <div className="userInputTitleLogIn">Item Name:</div>
                                 <input className="informationInuptLogIn"
-                                    name="password"
-                                    placeholder="LettersAnd123And!"
-                                    value={this.state.password}
+                                    name="itemName"
+                                    placeholder="Item name"
+                                    value={this.state.itemName}
                                     onChange={this.handleInputChange} />
-                                {/* add other divs  */}
+
+                                <div className="userInputTitleLogIn"> Item Description:</div>
+                                <input className="informationInuptLogIn"
+                                    name="itemDescription"
+                                    placeholder="Describe your item"
+                                    value={this.state.itemDescription}
+                                    onChange={this.handleInputChange} />
+
+                                <div className="userInputTitleLogIn"> Upload Picture:</div>
+                                <input className="informationInuptLogIn"
+                                    name="itemPicture"
+                                    placeholder="Upload your picture here!"
+                                    value={this.state.itemPicture}
+                                    onChange={this.handleInputChange} />
+                               
 
 
 
-
-                                <button className="doneButtonLogIn">Done</button>
+                                <button className="doneButtonLogIn" onClick={this.handlePostItem}>Post Item</button>
 
                             </form>
-                        </div>  
+                        </div>
                     </div>
                 </Modal>
             </div>
