@@ -8,7 +8,9 @@ class Profile extends Component {
 
   state = {
     username: "",
-    email: ""
+    email: "",
+    itemName: "",
+    itemDescription: ""
   };
 
   componentDidMount() {
@@ -21,6 +23,15 @@ class Profile extends Component {
         userId: res.data._id
       })
     });
+    API.getItem(this.props.item).then(res => {
+      console.log(res);
+      
+      this.setState({
+        itemName: res.data.itemName,
+        itemDescription: res.data.itemDescription,
+        userId: res.data._id
+      })
+    });
   }
 
   render() {
@@ -29,6 +40,7 @@ class Profile extends Component {
         <h1>On the profile page!</h1>
         <p>Username: {this.state.username}</p>
         <p>Email: {this.state.email}</p>
+        <p></p>
         <ItemInputCard
           userId={this.state.userId}
         />

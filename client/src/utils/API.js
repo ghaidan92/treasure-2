@@ -11,6 +11,9 @@ export default {
   postItem: (body) => {
     console.log(body)
     return axios.post("/api/additem", { itemName: body.itemName, itemDescription: body.itemDescription, userId:body.userId })
+  },
+  getItem: (body) => {
+    console.log(body)
+    return axios.get("/api/getitem/:id", { body})
   }
-
 };

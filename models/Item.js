@@ -12,7 +12,8 @@ const ItemSchema = new Schema({
     trim: true,
   },
   userId: {
-    type: String
+    type: Schema.Types.ObjectId,
+    ref: "User"
   },
   location: {
     type: Number

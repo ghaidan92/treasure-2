@@ -55,10 +55,31 @@ class ItemInputCard extends React.Component {
             itemName, 
             itemDescription,
             itemPicture,
-            username,
+            username
         }
        console.log(newItem)
         API.postItem(newItem)
+        this.setState({
+            itemName: "",
+            itemDescription: "",
+            itemPicture: "",
+            username:"",
+            
+        })
+
+    }
+    handleGetItem = (e) => {
+        e.preventDefault()
+        const { itemName, itemDescription, itemPicture, username } = this.state;
+        
+        const newItem = {
+            itemName, 
+            itemDescription,
+            itemPicture,
+            username,
+        }
+       console.log(newItem)
+        API.getItem(newItem)
         this.setState({
             itemName: "",
             itemDescription: "",
@@ -162,7 +183,7 @@ class ItemInputCard extends React.Component {
 
 
 
-                                <button className="doneButtonLogIn" onClick={this.handlePostItem}>Post Item</button>
+                                <button className="doneButtonLogIn" onClick={this.handleGetItem}>Post Item</button>
 
                             </form>
                         </div>
