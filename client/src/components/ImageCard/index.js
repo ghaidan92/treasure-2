@@ -1,30 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class ImageCard extends Component {
 
-    // constructor(props) {
-    //     super(props);
-      
-    //     this.itemObjRef = React.createRef();
-    // }
+const Card = (props) => {
 
-    componentDidMount() {
- 
-        // console.log(this.imageRef.current.clientHeight);
-    }
+    return (
+        <div>
+            <h1>{props.itemName}</h1>
+            <h2>{props.zipCode}</h2>
+        </div>
+    )
 
-  
-    render() {
-        // const {description, urls} =this.props.image;
-
-        return (
-            <div >
-
-                <h1 className="test">{this.props.itemName}</h1>
-                {/* <img ref={this.itemObjRef} src={this.props.itemObj} alt='alt'/> */}
-            </div>
-        );
-    }
 }
 
-export default ImageCard;
+export default Card;
