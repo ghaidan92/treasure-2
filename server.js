@@ -52,8 +52,25 @@ app.post('/api/login', (req, res) => {
 //POST ITEMS ROUTE
 app.post('/api/additem', isAuthenticated, (req, res) => {
   db.Item.create(req.body)
-    .then(data => res.json(data))
+    .then(dbItem => {
+      return db.User.findOneAndUpdate({}, { $push: { items: dbItem._id }}, { new :true});
+      
+    })
+    .then(dbUser =>{
+      res.json(dbUser)
+    })
     .catch(err => res.status(400).json(err));
+});
+
+app.get("/populateduser", (req, res) =>{
+  db.User.find({})
+  .populate("items")
+  .then(dbUser => {
+    res.json(dbUser);
+  })
+  .catch(function(err) {
+    res.json(err)
+  })
 });
 app.get('/api/getitem/:id', isAuthenticated, (req, res)=>{
   db.Item.findById(req.params.id)

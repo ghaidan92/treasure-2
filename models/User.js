@@ -22,6 +22,12 @@ const UserSchema = new Schema({
     type: String,
     required: true
   },
+  items: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Item"
+    }
+  ],
   createdAt: {
     type: Date,
     default: Date.now
