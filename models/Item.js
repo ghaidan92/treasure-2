@@ -14,7 +14,7 @@ const ItemSchema = new Schema({
   userId: {
     type: String
   },
-  location: {
+  zipCode: {
     type: Number
   },
   catagories: {
