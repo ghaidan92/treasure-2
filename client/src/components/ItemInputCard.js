@@ -186,7 +186,7 @@ class ItemInputCard extends React.Component {
                                     value={this.state.zipCode} />
 
 
-                                <button className="doneButtonLogIn" onClick={this.handleGetItem}>Post Item</button>
+                                <button className="doneButtonLogIn" >Post Item</button>
 
                             </form>
                         </div>

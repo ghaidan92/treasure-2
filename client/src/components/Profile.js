@@ -22,16 +22,16 @@ class Profile extends Component {
         email: res.data.email,
         userId: res.data._id
       })
-    });
-    API.getItem(this.props.item).then(res => {
-      console.log(res);
+    })
+    // API.getItem(this.props.item).then(res => {
+    //   console.log(res);
       
-      this.setState({
-        itemName: res.data.itemName,
-        itemDescription: res.data.itemDescription,
-        userId: res.data._id
-      })
-    });
+    //   this.setState({
+    //     itemName: res.data.itemName,
+    //     itemDescription: res.data.itemDescription,
+    //     userId: res.data._id
+    //   })
+    // });
   }
 
   render() {
