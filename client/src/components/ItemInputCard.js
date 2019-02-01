@@ -58,7 +58,7 @@ class ItemInputCard extends React.Component {
             zipCode,
             userId
         }
-       console.log(newItem)
+    //    console.log(newItem)
         API.postItem(newItem)
         this.setState({
             itemName: "",
