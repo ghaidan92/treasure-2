@@ -15,7 +15,7 @@ const ItemSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "User"
   },
-  location: {
+  zipCode: {
     type: Number
   },
   catagories: {

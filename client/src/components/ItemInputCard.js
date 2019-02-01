@@ -29,7 +29,7 @@ class ItemInputCard extends React.Component {
             itemName: '',
             itemDescription: '',
             itemPicture: '',
-            username: ''
+            zipCode: ''
 
         };
 
@@ -49,13 +49,14 @@ class ItemInputCard extends React.Component {
 
     handlePostItem = (e) => {
         e.preventDefault()
-        const { itemName, itemDescription, itemPicture, username } = this.state;
-        
+        const { itemName, itemDescription, itemPicture, zipCode } = this.state;
+        let userId = this.props.userId
         const newItem = {
             itemName, 
             itemDescription,
             itemPicture,
-            username
+            zipCode,
+            userId
         }
        console.log(newItem)
         API.postItem(newItem)
@@ -84,7 +85,9 @@ class ItemInputCard extends React.Component {
             itemName: "",
             itemDescription: "",
             itemPicture: "",
-            username:""
+            username:"",
+            zipCode:"",
+           
         })
 
     }
@@ -113,7 +116,7 @@ class ItemInputCard extends React.Component {
     //     console.log(this.props);
         
     //     var body = {
-    //         itemName: this.state.username,
+    //         itemName: this.state.zipCode,
     //         itemDescription: this.state.password,
     //         userId: this.props.userId
     //     }
@@ -152,12 +155,8 @@ class ItemInputCard extends React.Component {
                             <form onSubmit={this.handlePostItem}>
 
 
-                                <div className="userInputTitleLogIn">Username:</div>
-                                <input className="informationInuptLogIn"
-                                    name="username"
-                                    placeholder="Your username"
-                                    onChange={this.handleInputChange}
-                                    value={this.state.username} />
+                                <div className="userInputTitleLogIn">zipCode:</div>
+                                
 
                                 <div className="userInputTitleLogIn">Item Name:</div>
                                 <input className="informationInuptLogIn"
@@ -180,7 +179,11 @@ class ItemInputCard extends React.Component {
                                     value={this.state.itemPicture}
                                     onChange={this.handleInputChange} />
                                
-
+                               <input className="informationInuptLogIn"
+                                    name="zipCode"
+                                    placeholder=" zipCode"
+                                    onChange={this.handleInputChange}
+                                    value={this.state.zipCode} />
 
 
                                 <button className="doneButtonLogIn" onClick={this.handleGetItem}>Post Item</button>
