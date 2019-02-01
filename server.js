@@ -55,6 +55,19 @@ app.post('/api/additem', isAuthenticated, (req, res) => {
     .then(data => res.json(data))
     .catch(err => res.status(400).json(err));
 });
+app.get('/api/getitem/:id', isAuthenticated, (req, res)=>{
+  db.Item.findById(req.params.id)
+  .then(data => {
+    console.log(data);
+    if(data) {
+      res.json(data);
+    } else {
+      res.status(404).send({success: false, message: 'No user found'});
+    }
+  })
+})
+
+
 
 // SIGNUP ROUTE
 app.post('/api/signup', (req, res) => {
