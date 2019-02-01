@@ -62,16 +62,7 @@ app.post('/api/additem', isAuthenticated, (req, res) => {
     .catch(err => res.status(400).json(err));
 });
 
-app.get("/populateduser", (req, res) =>{
-  db.User.find({})
-  .populate("items")
-  .then(dbUser => {
-    res.json(dbUser);
-  })
-  .catch(function(err) {
-    res.json(err)
-  })
-});
+
 app.get('/api/getitem/:id', isAuthenticated, (req, res)=>{
   db.Item.findById(req.params.id)
   .then(data => {
@@ -83,7 +74,6 @@ app.get('/api/getitem/:id', isAuthenticated, (req, res)=>{
     }
   })
 })
-
 
 
 // SIGNUP ROUTE
