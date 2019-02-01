@@ -3,6 +3,7 @@ import withAuth from './withAuth';
 import API from '../utils/API';
 import ItemInputCard from "./ItemInputCard.js";
 import { Link } from 'react-router-dom';
+import ImageList from './ImageList';
 
 class Profile extends Component {
 
@@ -10,14 +11,14 @@ class Profile extends Component {
     username: "",
     email: "",
     items: [],
-    itemobj: []
+    itemObjects: []
   };
 
   itemloop(itemArr) {
     for (var i= 0; i < 5; i++) {
       API.getItem(itemArr[i]).then(res => {
-        this.state.itemobj.push({itemobj: res})
-        console.log(this.state.itemobj);
+        this.state.itemObjects.push({itemObjects: res})
+        console.log(this.state.itemObjects);
       });
     }
   }
@@ -56,6 +57,8 @@ class Profile extends Component {
           userId={this.state.userId}
         />
         <Link to="/">Go home</Link>
+
+        <ImageList itemObjects={this.state.itemObjects} />
 
       </div>
     )
