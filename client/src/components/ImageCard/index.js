@@ -1,15 +1,22 @@
 import React from 'react';
+import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button } from 'reactstrap';
+import './imagecard.css'
 
+const ImageCard = (props) => {
 
-const Card = (props) => {
 
     return (
         <div>
-            <h1>{props.itemName}</h1>
-            <h2>{props.zipCode}</h2>
+            <Card key={props.itemName} className="card">
+                <CardBody>
+                    <CardTitle>{props.itemName}</CardTitle>
+                    <CardSubtitle>Location: {props.zipCode}</CardSubtitle>
+                    <CardText>{props.itemDescription}</CardText>
+                </CardBody>
+            </Card>
         </div>
     )
 
 }
 
-export default Card;
+export default ImageCard;

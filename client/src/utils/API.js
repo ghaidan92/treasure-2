@@ -8,6 +8,10 @@ export default {
   getItem: (id) => {
     return axios.get(`/api/getitem/${id}`);
   },
+
+  getAllItems: () => {
+    return axios.get("")
+  },
   // Sign up a user to our service
   signUpUser: (username, email, password, firstname, lastname, zipcode) => {
     return axios.post('api/signup', { username: username, email: email, password: password, firstname: firstname, lastname: lastname, zipcode: zipcode});
