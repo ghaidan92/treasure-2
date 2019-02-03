@@ -101,6 +101,12 @@ app.get('/api/user/:id', isAuthenticated, (req, res) => {
   .catch(err => res.status(400).send(err));
 });
 
+app.get('/api/allitems', (req, res) => {
+  db.Item.find({})
+  .then(data =>res.json(data))
+  .catch(err => res.statusMessage(400).json(err))
+})
+
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));

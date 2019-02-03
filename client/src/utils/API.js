@@ -10,7 +10,7 @@ export default {
   },
 
   getAllItems: () => {
-    return axios.get("")
+    return axios.get("/api/allitems");
   },
   // Sign up a user to our service
   signUpUser: (username, email, password, firstname, lastname, zipcode) => {
