@@ -43,12 +43,20 @@ class SocketForm extends Component {
                     </div>
                     <div class="col-md-8">
                         <div class="chat" id="chat"></div>
-
+                        {this.state.messages.map(message => <li key={message}>{message}</li>)}
                         <form id="messageForm">
                             <div class="form-group">
                                 <label>Enter Message</label>
                                 <textarea class="form-control" id="message"></textarea>
                                 <br />
+                                <input
+                                    value={this.state.message}
+                                    name="message"
+                                    onChange={this.handleInputChange}
+                                    type="text"
+                                    placeholder="your message"
+                                    className="form-control"
+                                />
                                 <input type="submit" class="btn btn-primary" value="Send Message" />
                             </div>
                         </form>

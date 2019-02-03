@@ -14,10 +14,10 @@ export default {
   },  
   postItem: (body) => {
     // console.log(body)
-    return axios.post("/api/additem", { itemName: body.itemName, itemDescription: body.itemDescription, userId:body.userId, zipCode: body.zipCode })
+    return axios.post("/api/additem", { itemName: body.itemName, itemDescription: body.itemDescription, userId:body.userId, zipCode: body.zipCode, itemPicture:body.itemPicture})
   },
   getItem: (body) => {
-    console.log(body)
+    // console.log(body)
     return axios.get("/api/getitem/:id", { body})
   }
 };

@@ -124,6 +124,8 @@ var io = require('socket.io').listen(server);
 users = [];
 connections = [];
 
+
+//Needs to verify user (socket.on(VERIFY_USER), Then connect with username)
 io.sockets.on('connection', function(socket){
     connections.push(socket);
     console.log("connected: %s sockets connected", connections.length);

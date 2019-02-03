@@ -35,15 +35,19 @@ class ItemInputCard extends React.Component {
 
         this.openModal = this.openModal.bind(this);
         this.afterOpenModal = this.afterOpenModal.bind(this);
-        this.closeModal = this.closeModal.bind(this);
+        this.closeModal = this.closeModal.bind(this); 
+        this.handleUploadImage = this.handleUploadImage.bind(this);
     }
 
     handleInputChange = e => {
         const { name, value } = e.target;
         //the way the console log is located it looks like it is 1 letter behing but really it is not
-        // console.log(this.state)
+      
+       
+        
         this.setState({
-            [name]: value
+            [name]: value,
+            
         });
     }
 
@@ -91,7 +95,29 @@ class ItemInputCard extends React.Component {
         })
 
     }
+
+    handleUploadImage(ev) {
+        ev.preventDefault();
+
+        const data = new FormData();
+        data.append('file', this.uploadInput.files[0] );
+        data.append('category', 'image');
+               
+        fetch('https://www.fileconvrtr.com/api/convert/file?apiKey=a8f545dbb31244a5b081a8cc6bdf37f7',{
+          method: 'POST',
+          body: data
+        }).then((response) => {
+            
+            response.json().then((body) => {
+               this.setState({
+                 itemPicture: body.s3Url  
+               })
+              console.log(body)  
+              });
+            });
+          }
         
+   
     //idea for what to do on submit
     // handleFormSubmit = e => {
     //     e.preventDefault();
@@ -169,15 +195,16 @@ class ItemInputCard extends React.Component {
                                 <input className="informationInuptLogIn"
                                     name="itemDescription"
                                     placeholder="Describe your item"
-                                    value={this.state.itemDescription}
-                                    onChange={this.handleInputChange} />
+                                     />
 
                                 <div className="userInputTitleLogIn"> Upload Picture:</div>
-                                <input className="informationInuptLogIn"
-                                    name="itemPicture"
-                                    placeholder="Upload your picture here!"
-                                    value={this.state.itemPicture}
-                                    onChange={this.handleInputChange} />
+                                <input type="file"
+                                    ref={(ref) => { this.uploadInput = ref; }}
+                                    
+                                    // value={this.state.itemPicture}
+                                    // onChange={this.handleInputChange}
+                                    // name="itemPicture"
+                                     />
                                
                                <input className="informationInuptLogIn"
                                     name="zipCode"
@@ -186,7 +213,7 @@ class ItemInputCard extends React.Component {
                                     value={this.state.zipCode} />
 
 
-                                <button className="doneButtonLogIn" >Post Item</button>
+                                <button className="doneButtonLogIn" onClick={this.handleUploadImage} >Post Item</button>
 
                             </form>
                         </div>

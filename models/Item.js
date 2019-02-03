@@ -4,13 +4,16 @@ const Schema = mongoose.Schema;
 const ItemSchema = new Schema({
   itemName: {
     type: String,
-    required: true,
     trim: true
   },
   itemDescription: {
     type: String,
     trim: true,
   },
+  itemPicture:{
+    type: String
+  },
+
   userId: {
     type: Schema.Types.ObjectId,
     ref: "User"
