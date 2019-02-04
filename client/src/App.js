@@ -4,6 +4,7 @@ import './App.css';
 import API from '../src/utils/API';
 import AuthService from './components/AuthService';
 import withAuth from './components/withAuth';
+import ImageList from './components/ImageList'
 const Auth = new AuthService();
 
 class App extends Component {
@@ -12,20 +13,16 @@ class App extends Component {
     items: []
   }
 
-
   componentDidMount = () => {
-
-
     API.getAllItems()
     .then(res => {
-      
       this.setState({
         items: res.data
       })
-
       console.log(this.state)
     })
   }
+
   handleLogout = () => {
     Auth.logout();
     this.props.history.replace('/signup');
@@ -43,6 +40,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome {this.props.user.email}</h2>
         </div>
+        <ImageList itemObj={this.state.items} />
         <p className="App-intro">
           <button type="button" className="btn btn-primary" onClick={this.goToEditProfile}>Go to Profile</button>
           <button type="button" className="btn btn-danger" onClick={this.handleLogout}>Logout</button>
