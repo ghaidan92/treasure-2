@@ -1,5 +1,5 @@
 import React from 'react';
-import API from '../utils/API'
+import API from '../utils/API';
 import Modal from 'react-modal';
 
 // import { groupPatternsByBaseDirectory } from 'fast-glob/out/managers/tasks';
@@ -112,7 +112,7 @@ class ItemInputCard extends React.Component {
                this.setState({
                  itemPicture: body.s3Url  
                })
-              console.log(body)  
+            //   console.log(body)  
               });
             });
           }

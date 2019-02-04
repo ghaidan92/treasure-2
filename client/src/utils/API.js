@@ -19,5 +19,13 @@ export default {
   // Adds new item and pushes item.id to array in Users  
   postItem: (body) => {
     return axios.post("/api/additem", { itemName: body.itemName, itemDescription: body.itemDescription, userId:body.userId, zipCode: body.zipCode })
-  }
+  },
+  // Adds chat to chat DB
+  postChat: (body) => {
+    return axios.post("/api/addchat", { message: body.message })
+  },
+  // Gets chats from DB
+  getAllChats: (id) => {
+    return axios.get(`/api/getChats/${id}`);
+  },
 };

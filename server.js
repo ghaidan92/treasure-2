@@ -64,7 +64,7 @@ app.post('/api/additem', isAuthenticated, (req, res) => {
 
 
 
-
+//Get items from DB
 app.get('/api/getitem/:id', isAuthenticated, (req, res)=>{
   db.Item.findById(req.params.id)
   .then(data => {
@@ -127,6 +127,20 @@ app.use(function (err, req, res, next) {
   }
 });
 
+// Route to post chats to db
+app.post('/api/addchat', (req, res) => {
+  db.Chat.create(req.body)
+    .then(data => res.json(data))
+    .catch(err => res.status(400).json(err));
+});
+
+// Route to get chats from db
+app.get('/api/getchats', (req, res) => {
+  db.Chat.find({})
+  .then(data =>res.json(data))
+  .catch(err => res.statusMessage(400).json(err))
+})
+
 // start chat code
 var server = require('http').createServer(app);
 var io = require('socket.io').listen(server);
@@ -152,7 +166,7 @@ io.sockets.on('connection', function(socket){
 
     //send message
     socket.on('send message', function(data){
-        // console.log(data)
+        console.log(data)
         io.sockets.emit('new message', {msg: data, user:socket.username})
     });
 

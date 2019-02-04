@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import './SocketForm.css';
 import { sockets } from '../../utils/sockets';
+import API from '../../utils/API';
 
 
 class SocketForm extends Component {
@@ -30,6 +32,26 @@ class SocketForm extends Component {
         sockets.sendMessage(this.state.message);
         this.setState({ message: "" });
     };
+    handlePostChat = (e) => {
+        e.preventDefault()
+        const { message } = this.state;
+        let userId = this.props.userId
+        const newChat = {
+            message,
+            userId
+        }
+    //    console.log(newChat)
+        API.postChat(newChat)
+        this.setState({
+            message: ""
+            
+        })
+
+    }
+    // handleGetChats = (req, res) => {
+    //     API.getAllChats()
+    //     .then(res.jason())
+    //   }
 
     render() {
         return (
@@ -47,7 +69,7 @@ class SocketForm extends Component {
                         <form id="messageForm">
                             <div class="form-group">
                                 <label>Enter Message</label>
-                                <textarea class="form-control" id="message"></textarea>
+                                <div class="form-control" id="message" placeholder="messages appear here">{this.messages}</div>
                                 <br />
                                 <input
                                     value={this.state.message}
@@ -57,7 +79,7 @@ class SocketForm extends Component {
                                     placeholder="your message"
                                     className="form-control"
                                 />
-                                <input type="submit" class="btn btn-primary" value="Send Message" />
+                                <input type="submit" class="btn btn-primary" value="Send Message" onClick={this.handlePostChat} />
                             </div>
                         </form>
                     </div>

@@ -6,6 +6,7 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 import axios from "axios";
+import SocketForm from "./components/SocketForms/SocketForm"
 
 
 // Our Components
@@ -26,6 +27,7 @@ ReactDOM.render(
             <Navbar />
             <Route exact path="/" component={App} />
             <Route exact path="/profile" component={Profile} />
+            <Route exact path="/SocketForm" component={SocketForm} />
         </div>
     </Router>
     , document.getElementById('root')
