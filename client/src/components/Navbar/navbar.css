@@ -2,6 +2,48 @@ body {
     margin:0px;
 }
 
+.profileButton{
+  color:black;
+  font-size: 1.3vw;
+  float: right;
+  border: solid 3px;
+  border-radius: 20px;
+  font-weight: 900;
+  width:8vw;
+ text-align: center;
+  background-color: rgb(204, 219, 233);
+  margin-right:1vw;
+}
+
+.profileButton:hover {
+ 
+  opacity: 1;
+
+  color:rgb(204, 219, 233);
+}
+.logOutButton{
+  color:black;
+  font-size: 1.3vw;
+  float: right;
+  border: solid 3px;
+  border-radius: 20px;
+  font-weight: 900;
+  width:8vw;
+  text-align: center;
+  background-color: rgb(204, 219, 233);
+}
+
+.logOutButton:hover {
+ 
+  opacity: 1;
+
+  color:rgb(204, 219, 233);
+}
+a .comment { display: none; }
+a:hover .replies { display: none; }
+a:hover .comment { display: inline; }
+
+
 
 .navbarStyle{
     font-size: 6vw;
