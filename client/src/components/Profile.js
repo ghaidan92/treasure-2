@@ -43,7 +43,8 @@ class Profile extends Component {
         />
         <Link to="/">Go home</Link>
 
-        <ImageList itemObj={this.state.items} />
+        <ImageList itemObj={this.state.items} 
+        username={this.state.username}/>
 
       </div>
     )

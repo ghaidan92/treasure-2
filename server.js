@@ -68,7 +68,6 @@ app.post('/api/additem', isAuthenticated, (req, res) => {
 app.get('/api/getitem/:id', isAuthenticated, (req, res)=>{
   db.Item.findById(req.params.id)
   .then(data => {
-    console.log(data);
     if(data) {
       res.json(data);
     } else {
@@ -107,6 +106,12 @@ app.get('/api/allitems', (req, res) => {
   .catch(err => res.statusMessage(400).json(err))
 })
 
+app.get('/api/allusers', (req, res) => {
+  db.User.find({})
+    .populate("items")
+    .then(data => res.json(data))
+    .catch(err => res.statusMessage(400).json(err))
+});
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));

@@ -12,12 +12,17 @@ export default {
   getAllItems: () => {
     return axios.get("/api/allitems");
   },
+
+  getAllUsers: () => {
+    return axios.get('/api/allusers');
+  },
   // Sign up a user to our service
   signUpUser: (username, email, password, firstname, lastname, zipcode) => {
     return axios.post('api/signup', { username: username, email: email, password: password, firstname: firstname, lastname: lastname, zipcode: zipcode});
   },
   // Adds new item and pushes item.id to array in Users  
   postItem: (body) => {
+<<<<<<< HEAD
     return axios.post("/api/additem", { itemName: body.itemName, itemDescription: body.itemDescription, userId:body.userId, zipCode: body.zipCode })
   },
   // Adds chat to chat DB
@@ -28,4 +33,8 @@ export default {
   getAllChats: (id) => {
     return axios.get(`/api/getChats/${id}`);
   },
+=======
+    return axios.post("/api/additem", { itemName: body.itemName, itemDescription: body.itemDescription, userId:body.userId, zipCode: body.zipCode, itemPicture: body.itemPicture })
+  }
+>>>>>>> 20d4df6bacabdabcd6451b9263a731a3ab2238e8
 };

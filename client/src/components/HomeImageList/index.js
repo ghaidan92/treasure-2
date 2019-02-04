@@ -1,16 +1,18 @@
 import React from 'react';
-import './imagelist.css';
 import ImageCard from "../ImageCard";
 
-const ImageList = (props) => {
+const HomeImageList = (props) => {
     
-    for (var i=0; i<props.itemObj.length; i++) {
-        console.log(i);
-        console.log(props.itemObj[i]);
-       
-        
+    console.log(props.users);
+    console.log(props);
+    var Image;
+    
 
-        var Image = props.itemObj.map(object => {
+    props.users.forEach((user) => {
+        console.log(user)
+
+        Image = user.items.map(object => {
+            console.log(object)
             return <ImageCard 
             itemName={object.itemName} 
             zipCode={object.zipCode}
@@ -20,8 +22,9 @@ const ImageList = (props) => {
             username={object.username}
             />
         })
-    }
-   
+    });
+
+
     return(
 
         <div className="card-columns">
@@ -30,4 +33,4 @@ const ImageList = (props) => {
     )
 };
 
-export default ImageList;
+export default HomeImageList;

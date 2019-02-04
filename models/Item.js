@@ -13,7 +13,6 @@ const ItemSchema = new Schema({
   itemPicture:{
     type: String
   },
-
   userId: {
     type: Schema.Types.ObjectId,
     ref: "User"
