@@ -6,7 +6,6 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 import axios from "axios";
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 // Our Components
