@@ -11,7 +11,7 @@ class Navbar extends Component {
         super();
         this.Auth = new AuthService();
         this.state = {
-            x: 0,
+            x: 200,
             y: 0
         }
     }
