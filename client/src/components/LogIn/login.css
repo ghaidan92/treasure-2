@@ -7,14 +7,14 @@
     font-weight: 900;
     width:8vw;
    
-    background-color: rgb(204, 219, 233);
+    background-color: rgb(255, 255, 255);
 }
 
 .logInButton:hover {
    
     opacity: .8;
 
-    color:rgb(204, 219, 233);
+    color:rgb(255, 255, 255);
   }
   button .comment { display: none; }
   button:hover .replies { display: none; }

@@ -1,15 +1,16 @@
-.addPicButton{
+
+.postItem{
     color:black;
-    font-size: .8vw;
-   
+    font-size: 1.3vw;
+   float:right;
     border: solid 3px;
     border-radius: 20px;
     font-weight: 900;
-    width:6vw;
+    width:9vw;
     background-color: rgb(204, 219, 233);
 }
 
-.addPicButton:hover {
+.postItem:hover {
    
     opacity: .8;
 

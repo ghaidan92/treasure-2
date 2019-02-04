@@ -1,6 +1,7 @@
 import React from 'react';
 import API from '../utils/API'
 import Modal from 'react-modal';
+import './iteminputcard.css'
 
 // import { groupPatternsByBaseDirectory } from 'fast-glob/out/managers/tasks';
 
@@ -115,7 +116,7 @@ class ItemInputCard extends React.Component {
     render() {
         return (
             <div>
-                <button className="logInButton"onClick={this.openModal}><span class="replies">Post item</span>
+                <button className="postItem"onClick={this.openModal}><span class="replies">Post item</span>
     <span class="comment"> 🔱️</span></button>
                 <Modal
                     isOpen={this.state.modalIsOpen}
