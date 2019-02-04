@@ -1,5 +1,4 @@
 import React from 'react';
-import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button } from 'reactstrap';
 import './imagecard.css'
 
 const ImageCard = (props) => {
@@ -7,16 +6,17 @@ const ImageCard = (props) => {
 
     return (
         <div>
-            <Card key={props.itemName} className="card">
-                <CardBody>
-                    <CardTitle>{props.itemName}</CardTitle>
-                    <CardSubtitle>Location: {props.zipCode}</CardSubtitle>
-                    <CardText>{props.itemDescription}</CardText>
-                </CardBody>
-            </Card>
+            <div className="card" key={props.itemName}>
+                <div className="card-body">
+                    <h5 className="card-title">{props.itemName}</h5>
+                    <h6 className="card-subtitle mb-2 text-muted">Location: {props.zipCode}</h6>
+                    <p className="card-text">{props.itemDescription}</p>
+                    <a href="#" className="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
         </div>
     )
-
+        
 }
-
+        
 export default ImageCard;
