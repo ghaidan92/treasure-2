@@ -1,12 +1,9 @@
-
-
 import React from 'react';
-
+import Search from '../SearchBar/index'
 import Modal from 'react-modal';
 import AuthService from './../AuthService';
 import './login.css'
 import { Link } from 'react-router-dom';
-// import { groupPatternsByBaseDirectory } from 'fast-glob/out/managers/tasks';
 
 const customStyles = {
 
@@ -47,7 +44,7 @@ class LogIn extends React.Component {
 
   handleInputChange = e => {
     const { name, value } = e.target;
-    //the way the console log is located it looks like it is 1 letter behing but really it is not
+    //the way the console log is located it looks like it is 1 letter behind but really it is not
     console.log(this.state)
     this.setState({
       [name]: value
@@ -71,21 +68,8 @@ class LogIn extends React.Component {
         alert("error");
       });
   };
-  //idea for what to do on submit
-  // handleFormSubmit = e => {
-  //     e.preventDefault();
-  //     API
-  //         .addNewMember(this.state)
-  //         .then(res => {
-  //             alert(`Added new member named: ${res.data.name}`)
-  //             this.setState({
-  //                 name: "",
-  //                 github:"",
-  //                 linkedin:""
-  //             });
-  //         })
-  //         .catch(err => console.log(err));   
-  // }
+ 
+  
   openModal() {
     this.setState({ modalIsOpen: true });
   }
