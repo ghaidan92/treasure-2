@@ -1,20 +1,75 @@
 body {
     margin:0px;
 }
-.navbar {
+
+
+.navbarStyle{
+    font-size: 6vw;
+    font-weight: 900;
+    float:left;
     background-color: white;
     width: 100vw;
     height: 11vw;
     border-bottom: solid .5vh rgb(0, 0, 0);
-
-   
-}
-.treasureNavBar {
-   
-    font-size: 4vw;
+    background-color: rgb(204, 219, 233);
     
-    font-weight: 900;
-    margin-top: 6vw;
-  margin-left: 4vw;
-    float:left;
 }
+.titleContainer{
+  position: relative;
+  --maskX: 0;
+  --maskY: 50;
+  font-size: 6vw;
+  float:left;
+  
+}
+
+.titleContainer.treasureTitle {
+ text-decoration: none;
+    color: black;
+    font-size: 6vw;
+    text-align: center;
+    bottom:0;
+  }
+  
+.cloneWrapper {
+  position: absolute;
+  top:0;
+  left: 0;
+  color:  rgb(0, 0, 0);
+  /* clip-path: polygon(0 0, 100 0, 50% calc(var(--maskY) * 1%), 100% calc(var(--maskY) * 1%)); */
+  /* clip-path: inset(0% 0% 0% calc(var(--maskX) * 1%)); */
+  clip-path: inset(   calc(var(--maskX) * 1%) 0% 0% 0%);
+}
+
+
+ 
+/* boat animation */
+.shipMove {
+    position: absolute;
+    top: 86%;
+    left: -200px;
+    z-index: 10;
+    height:3vh;
+    width:4vw;
+
+    animation-duration: 60s;
+    animation-name: goRight;
+    animation-iteration-count: infinite;
+  }
+  
+  @keyframes goRight {
+    from {
+      transform: translate(0,0);
+    }
+  
+    to {
+      transform: translate(1920px,0);
+    }
+  }
+
+  .titleContainer .navbar-brand {
+    font-size: 2rem;
+  }
+  .titleContainer .navbar-brand.cloneWrapper{
+    font-size: 1rem;
+  }

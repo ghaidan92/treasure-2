@@ -10,7 +10,25 @@ class Navbar extends Component {
     constructor() {
         super();
         this.Auth = new AuthService();
+        this.state = {
+            x: 0,
+            y: 0
+        }
     }
+
+ 
+        _onMouseMove = (e) => {
+        const width = this.refs.AboutUsBox.clientWidth;
+        const height = this.refs.AboutUsBox.clientHeight;
+        const oX = (e.nativeEvent.offsetX/width) * 100;
+        const oY = (e.nativeEvent.offsetY/height) * 100;
+        console.log(oX, oY);
+        this.setState({
+            x: oX,
+            y: oY
+        })
+    }
+    
 
     showNavigation = () => {
         if (this.Auth.loggedIn()) {
@@ -38,12 +56,20 @@ class Navbar extends Component {
             );
         }
     };
-
+ 
     render() {
+        const {x, y} = this.state;
+        const maskStyle = { 
+          '--maskX' : x,
+          '--maskY' : y
+        }
         return (
-            <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+            <nav className="navbar navbar-expand-md navbarStyle">
                 <div className="container">
-                    <Link className="navbar-brand" to="/">Treasure</Link>
+                <div className="titleContainer">
+                    <Link className="navbar-brand treasureTitle" to="/" onMouseMove={this._onMouseMove} ref="AboutUsBox" style={maskStyle} >Treasure</Link>
+                    <div className="navbar-brand treasureTitle cloneWrapper" to="/" onMouseMove={this._onMouseMove} ref="AboutUsBox" style={maskStyle}>Find <br/>Hidden...</div>
+                </div>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
@@ -52,7 +78,10 @@ class Navbar extends Component {
                         </ul>
                         {this.showNavigation()}
                     </div>
+                    
                 </div>
+                
+                <img className="shipMove" src="./images/ship.png" alt="ship" />
             </nav>
         )
     }
