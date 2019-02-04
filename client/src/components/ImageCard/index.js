@@ -1,30 +1,22 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button } from 'reactstrap';
+import './imagecard.css'
 
-class ImageCard extends Component {
+const ImageCard = (props) => {
 
-    // constructor(props) {
-    //     super(props);
-      
-    //     this.itemObjRef = React.createRef();
-    // }
 
-    componentDidMount() {
- 
-        // console.log(this.imageRef.current.clientHeight);
-    }
+    return (
+        <div>
+            <Card key={props.itemName} className="card">
+                <CardBody>
+                    <CardTitle>{props.itemName}</CardTitle>
+                    <CardSubtitle>Location: {props.zipCode}</CardSubtitle>
+                    <CardText>{props.itemDescription}</CardText>
+                </CardBody>
+            </Card>
+        </div>
+    )
 
-  
-    render() {
-        // const {description, urls} =this.props.image;
-
-        return (
-            <div >
-
-                <h1 className="test">{this.props.itemName}</h1>
-                {/* <img ref={this.itemObjRef} src={this.props.itemObj} alt='alt'/> */}
-            </div>
-        );
-    }
 }
 
 export default ImageCard;
