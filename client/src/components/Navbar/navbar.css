@@ -20,6 +20,7 @@ body {
   --maskY: 50;
   font-size: 6vw;
   float:left;
+  color: black;
   
 }
 
@@ -70,6 +71,7 @@ body {
 
   .titleContainer .navbar-brand {
     font-size: 1.9rem;
+    color: black;
   }
   .titleContainer .navbar-brand.cloneWrapper{
     font-size: .9rem;
