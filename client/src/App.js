@@ -4,7 +4,7 @@ import './App.css';
 import API from '../src/utils/API';
 import AuthService from './components/AuthService';
 import withAuth from './components/withAuth';
-import ImageList from './components/ImageList'
+import HomeImageList from './components/HomeImageList'
 const Auth = new AuthService();
 
 class App extends Component {
@@ -14,13 +14,17 @@ class App extends Component {
   }
 
   componentDidMount = () => {
-    API.getAllItems()
+
+    API.getAllUsers()
     .then(res => {
+      console.log(res.data)
       this.setState({
         items: res.data
       })
+
       console.log(this.state)
-    })
+    });
+
   }
 
   handleLogout = () => {
@@ -37,10 +41,10 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+          
           <h2>Welcome {this.props.user.email}</h2>
         </div>
-        <ImageList itemObj={this.state.items} />
+        <HomeImageList users={this.state.items}/>
         <p className="App-intro">
           <button type="button" className="btn btn-primary" onClick={this.goToEditProfile}>Go to Profile</button>
           <button type="button" className="btn btn-danger" onClick={this.handleLogout}>Logout</button>

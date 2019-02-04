@@ -19,18 +19,14 @@ const customStyles = {
 Modal.setAppElement('#root')
 
 class ItemInputCard extends React.Component {
-
-
     constructor(props) {
         super(props);
-
         this.state = {
             modalIsOpen: false,
             itemName: '',
             itemDescription: '',
             itemPicture: '',
-            zipCode: ''
-
+            zipCode: '',
         };
 
         this.openModal = this.openModal.bind(this);
@@ -42,18 +38,15 @@ class ItemInputCard extends React.Component {
     handleInputChange = e => {
         const { name, value } = e.target;
         //the way the console log is located it looks like it is 1 letter behing but really it is not
-      
-       
-        
         this.setState({
             [name]: value,
-            
         });
+        
     }
 
-    handlePostItem = (e) => {
-        e.preventDefault()
-        const { itemName, itemDescription, itemPicture, zipCode } = this.state;
+    handlePostItem = () => {
+        const itemPicture = this.state.itemPicture;
+        const { itemName, itemDescription, zipCode, } = this.state;
         let userId = this.props.userId
         const newItem = {
             itemName, 
@@ -62,28 +55,28 @@ class ItemInputCard extends React.Component {
             zipCode,
             userId
         }
-    //    console.log(newItem)
+        console.log("this.state")
+        console.log(this.state)
         API.postItem(newItem)
-        this.setState({
-            itemName: "",
-            itemDescription: "",
-            itemPicture: "",
-            username:"",
-            
-        })
-
+        .then(
+            this.setState({
+                itemName: "",
+                itemDescription: "",
+                itemPicture: "",
+                zipCode: ''
+            })
+        )
     }
     handleGetItem = (e) => {
-        e.preventDefault()
-        const { itemName, itemDescription, itemPicture, username } = this.state;
+        const { itemName, itemDescription, itemPicture, zipCode } = this.state;
         
         const newItem = {
             itemName, 
             itemDescription,
             itemPicture,
-            username,
+            zipCode
         }
-       console.log(newItem)
+        
         API.getItem(newItem)
         this.setState({
             itemName: "",
@@ -96,9 +89,9 @@ class ItemInputCard extends React.Component {
 
     }
 
-    handleUploadImage(ev) {
-        ev.preventDefault();
+    handleUploadImage(e) {
 
+        e.preventDefault();
         const data = new FormData();
         data.append('file', this.uploadInput.files[0] );
         data.append('category', 'image');
@@ -108,48 +101,22 @@ class ItemInputCard extends React.Component {
           body: data
         }).then((response) => {
             
-            response.json().then((body) => {
-               this.setState({
-                 itemPicture: body.s3Url  
-               })
-              console.log(body)  
-              });
+        response.json()
+        .then((body) => {
+            this.setState({
+                itemPicture: body.s3Url  
+            })
+            this.handlePostItem();
             });
-          }
+            
+        });
         
-   
-    //idea for what to do on submit
-    // handleFormSubmit = e => {
-    //     e.preventDefault();
-    //     API
-    //         .addNewMember(this.state)
-    //         .then(res => {
-    //             alert(`Added new member named: ${res.data.name}`)
-    //             this.setState({
-    //                 name: "",
-    //                 github:"",
-    //                 linkedin:""
-    //             });
-    //         })
-    //         .catch(err => console.log(err));   
-    // }
+    }
+        
     openModal() {
         this.setState({ modalIsOpen: true });
     }
 
-    // handleAddItemSubmit = e=>{
-    //     e.preventDefault()
-    //     console.log(this.props);
-        
-    //     var body = {
-    //         itemName: this.state.zipCode,
-    //         itemDescription: this.state.password,
-    //         userId: this.props.userId
-    //     }
-        
-    // }
-
-    
 
     afterOpenModal() {
         // references are now sync'd and can be accessed.
@@ -195,22 +162,21 @@ class ItemInputCard extends React.Component {
                                 <input className="informationInuptLogIn"
                                     name="itemDescription"
                                     placeholder="Describe your item"
+                                    value={this.state.itemDescription}
+                                    onChange={this.handleInputChange} 
                                      />
 
                                 <div className="userInputTitleLogIn"> Upload Picture:</div>
                                 <input type="file"
                                     ref={(ref) => { this.uploadInput = ref; }}
-                                    
-                                    // value={this.state.itemPicture}
-                                    // onChange={this.handleInputChange}
-                                    // name="itemPicture"
                                      />
                                
                                <input className="informationInuptLogIn"
                                     name="zipCode"
                                     placeholder=" zipCode"
                                     onChange={this.handleInputChange}
-                                    value={this.state.zipCode} />
+                                    value={this.state.zipCode} 
+                                />
 
 
                                 <button className="doneButtonLogIn" onClick={this.handleUploadImage} >Post Item</button>
