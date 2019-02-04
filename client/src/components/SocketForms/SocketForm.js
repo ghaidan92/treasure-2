@@ -15,6 +15,7 @@ class SocketForm extends Component {
         super(props);
         sockets.listenForMessage(data => {
             this.setState({ messages: [...this.state.messages, data] })
+            console.log(this.state);
         });
     }
 
@@ -29,8 +30,7 @@ class SocketForm extends Component {
 
     submitForm = event => {
         event.preventDefault();
-        sockets.sendMessage(this.state.message);
-        this.setState({ message: "" });
+        
     };
     handlePostChat = (e) => {
         e.preventDefault()
@@ -40,12 +40,8 @@ class SocketForm extends Component {
             message,
             userId
         }
-    //    console.log(newChat)
+        sockets.sendMessage(this.state.message);
         API.postChat(newChat)
-        this.setState({
-            message: ""
-            
-        })
 
     }
     // handleGetChats = (req, res) => {
@@ -64,8 +60,12 @@ class SocketForm extends Component {
                         </div> */}
                     </div>
                     <div class="col-md-8">
-                        <div class="chat" id="chat"></div>
-                        {this.state.messages.map(message => <li key={message}>{message}</li>)}
+                        <div class="chat" id="chat">
+                            <ul>
+                                {this.state.messages.map(message => <li key={message}>{message}</li>)}
+                            </ul>
+                        </div>
+                        
                         <form id="messageForm">
                             <div class="form-group">
                                 <label>Enter Message</label>

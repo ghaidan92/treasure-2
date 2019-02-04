@@ -8,6 +8,9 @@ const app = express();
 const db = require('./models');
 const PORT = process.env.PORT || 3001;
 
+// start chat code
+var server = require('http').createServer(app);
+var io = require('socket.io').listen(server);
 // Setting CORS so that any website can
 // Access our API
 app.use((req, res, next) => {
@@ -146,15 +149,13 @@ app.get('/api/getchats', (req, res) => {
   .catch(err => res.statusMessage(400).json(err))
 })
 
-// start chat code
-var server = require('http').createServer(app);
-var io = require('socket.io').listen(server);
+
 users = [];
 connections = [];
 
 
 //Needs to verify user (socket.on(VERIFY_USER), Then connect with username)
-io.sockets.on('connection', function(socket){
+io.on('connection', function(socket){
     connections.push(socket);
     console.log("connected: %s sockets connected", connections.length);
 
@@ -167,12 +168,18 @@ io.sockets.on('connection', function(socket){
         connections.splice(connections.indexOf(socket), 1);
         console.log("Disconnected: %s sockets connected", connections.length);
     });
+
+    socket.on('message', function(data){
+      console.log(data);
+      io.emit('message', data);
+    });
+
     
 
     //send message
     socket.on('send message', function(data){
         console.log(data)
-        io.sockets.emit('new message', {msg: data, user:socket.username})
+        io.emit('new message', {msg: data, user:socket.username})
     });
 
     //new user
@@ -184,7 +191,7 @@ io.sockets.on('connection', function(socket){
     });
 
     function updateUsernames(){
-        io.sockets.emit('get users', users);
+        io.emit('get users', users);
     }
 });
 //end chat code
@@ -195,6 +202,6 @@ app.get("*", function(req, res) {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
-app.listen(PORT, function() {
+server.listen(PORT, function() {
   console.log(`🌎 ==> Server now on port ${PORT}!`);
 });

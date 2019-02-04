@@ -22,8 +22,7 @@ export default {
   },
   // Adds new item and pushes item.id to array in Users  
   postItem: (body) => {
-<<<<<<< HEAD
-    return axios.post("/api/additem", { itemName: body.itemName, itemDescription: body.itemDescription, userId:body.userId, zipCode: body.zipCode })
+    return axios.post("/api/additem", { itemName: body.itemName, itemDescription: body.itemDescription, userId:body.userId, zipCode: body.zipCode, itemPicture: body.itemPicture })
   },
   // Adds chat to chat DB
   postChat: (body) => {
@@ -33,8 +32,4 @@ export default {
   getAllChats: (id) => {
     return axios.get(`/api/getChats/${id}`);
   },
-=======
-    return axios.post("/api/additem", { itemName: body.itemName, itemDescription: body.itemDescription, userId:body.userId, zipCode: body.zipCode, itemPicture: body.itemPicture })
-  }
->>>>>>> 20d4df6bacabdabcd6451b9263a731a3ab2238e8
 };
