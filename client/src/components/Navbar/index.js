@@ -72,6 +72,7 @@ class Navbar extends Component {
                         <Link className="navbar-brand treasureTitle" to="/" onMouseMove={this._onMouseMove} ref="AboutUsBox" style={maskStyle} >Treasure</Link>
                         <div className="navbar-brand treasureTitle cloneWrapper" to="/" onMouseMove={this._onMouseMove} ref="AboutUsBox" style={maskStyle}>Find <br />Hidden...</div>
                     </div>
+                    
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
