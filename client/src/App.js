@@ -1,13 +1,31 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import API from '../src/utils/API';
 import AuthService from './components/AuthService';
 import withAuth from './components/withAuth';
 const Auth = new AuthService();
 
 class App extends Component {
 
+  state = {
+    items: []
+  }
 
+
+  componentDidMount = () => {
+
+
+    API.getAllItems()
+    .then(res => {
+      
+      this.setState({
+        items: res.data
+      })
+
+      console.log(this.state)
+    })
+  }
   handleLogout = () => {
     Auth.logout();
     this.props.history.replace('/signup');

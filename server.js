@@ -63,6 +63,8 @@ app.post('/api/additem', isAuthenticated, (req, res) => {
 });
 
 
+
+
 app.get('/api/getitem/:id', isAuthenticated, (req, res)=>{
   db.Item.findById(req.params.id)
   .then(data => {
@@ -87,6 +89,7 @@ app.post('/api/signup', (req, res) => {
 // to access
 app.get('/api/user/:id', isAuthenticated, (req, res) => {
   db.User.findById(req.params.id)
+  .populate("items")
   .then(data => {
     if(data) {
       res.json(data);
@@ -97,6 +100,12 @@ app.get('/api/user/:id', isAuthenticated, (req, res) => {
   })
   .catch(err => res.status(400).send(err));
 });
+
+app.get('/api/allitems', (req, res) => {
+  db.Item.find({})
+  .then(data =>res.json(data))
+  .catch(err => res.statusMessage(400).json(err))
+})
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
