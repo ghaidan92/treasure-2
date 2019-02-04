@@ -1,7 +1,7 @@
 .signUpButton{
     
         color:black;
-        font-size: 2vw;
+        font-size: 1.3vw;
         float: right;
         border: solid 3px;
         border-radius: 20px;
@@ -24,9 +24,11 @@
 .bodyOfReg {
     margin-left:3vw;
     margin-right:3vw;
+    z-index: 99;
 }
 
 .registerModal {
+    z-index: 99;
     width:70vw;
     height:70vh;
     padding-left:3vw;
@@ -38,6 +40,7 @@
     font-size: 6vh;
     margin-bottom:2.5vh;
     text-align: center;
+    z-index: 99;
 }
 .leftColumn{
     float:left;
