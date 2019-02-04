@@ -1,5 +1,5 @@
 import React from 'react';
-// import './imagelist.css';
+import './imagelist.css';
 import ImageCard from "../ImageCard";
 
 const ImageList = (props) => {
@@ -10,11 +10,12 @@ const ImageList = (props) => {
         zipCode={object.zipCode}
         itemDescription={object.itemDescription}
         key={object.name}
+        picture={object.itemPicture}
         />
     })
     return(
 
-        <div>
+        <div className="card-columns">
           {Image}
         </div>
     )

@@ -68,7 +68,6 @@ app.post('/api/additem', isAuthenticated, (req, res) => {
 app.get('/api/getitem/:id', isAuthenticated, (req, res)=>{
   db.Item.findById(req.params.id)
   .then(data => {
-    console.log(data);
     if(data) {
       res.json(data);
     } else {
