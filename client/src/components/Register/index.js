@@ -54,11 +54,13 @@ class Register extends React.Component {
   handleFormSubmit = event => {
     event.preventDefault();
     API.signUpUser(this.state.username, this.state.email, this.state.password, this.state.firstname, this.state.lastname, this.state.zipcode )
-      .then(res => {
+    .then(res=> {
+    // this.Auth.login(this.state.email, this.state.password)  
+    
         // once the user has signed up
         // send them to the login page
         this.closeModal();
-        
+        // window.location.replace("/profile")
         // this.props.history.replace('/login');
       })
       .catch(err => alert(err));
@@ -103,7 +105,8 @@ class Register extends React.Component {
   render() {
     return (
       <div>
-        <button className="signUpButton" onClick={this.openModal}>Sign Up</button>
+        <button className="signUpButton" onClick={this.openModal}><span class="replies">Sign Up</span>
+    <span class="comment">&#9875;</span></button>
         <Modal
           isOpen={this.state.modalIsOpen}
           onAfterOpen={this.afterOpenModal}

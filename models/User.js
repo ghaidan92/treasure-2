@@ -6,7 +6,7 @@ const UserSchema = new Schema({
   username: {
     type: String,
     required: true,
-    trim: true
+    trim: true 
   },
   email: {
     type: String,
@@ -19,6 +19,18 @@ const UserSchema = new Schema({
     }
   },
   password: {
+    type: String,
+    required: true
+  },
+  zipcode: {
+    type: Number,
+    required: true
+  },
+  firstname:{
+    type: String,
+    required: true
+  },
+  lastname:{
     type: String,
     required: true
   },
