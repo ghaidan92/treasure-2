@@ -10,9 +10,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 // Our Components
-import Login from './components/Login';
+// import Login from './components/Login';
 import Profile from './components/Profile';
-import Signup from './components/Signup';
+// import Signup from './components/Signup';
 import Navbar from './components/Navbar';
 
 // Here is if we have an id_token in localStorage

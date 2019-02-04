@@ -20,5 +20,4 @@ export default {
   postItem: (body) => {
     return axios.post("/api/additem", { itemName: body.itemName, itemDescription: body.itemDescription, userId:body.userId, zipCode: body.zipCode })
   }
-
 };
