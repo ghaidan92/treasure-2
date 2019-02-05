@@ -1,20 +1,19 @@
-.logInButton{
+.addPicButton{
     color:black;
-    font-size: 1.3vw;
-    float: right;
+    font-size: .8vw;
+   
     border: solid 3px;
     border-radius: 20px;
     font-weight: 900;
-    width:8vw;
-   
-    background-color: rgb(255, 255, 255);
+    width:6vw;
+    background-color: rgb(204, 219, 233);
 }
 
-.logInButton:hover {
+.addPicButton:hover {
    
     opacity: .8;
 
-    color:rgb(255, 255, 255);
+    color:rgb(204, 219, 233);
   }
   button .comment { display: none; }
   button:hover .replies { display: none; }

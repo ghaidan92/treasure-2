@@ -2,16 +2,58 @@ body {
     margin:0px;
 }
 
+.profileButton{
+  color:black;
+  font-size: 1.3vw;
+  float: right;
+  border: solid 3px;
+  border-radius: 20px;
+  font-weight: 900;
+  width:8vw;
+ text-align: center;
+  background-color: rgb(255, 255, 255);
+  margin-right:1vw;
+}
+
+.profileButton:hover {
+ 
+  opacity: 1;
+
+  color:rgb(255, 255, 255);
+}
+.logOutButton{
+  color:black;
+  font-size: 1.3vw;
+  float: right;
+  border: solid 3px;
+  border-radius: 20px;
+  font-weight: 900;
+  width:8vw;
+  text-align: center;
+  background-color: rgb(255, 255, 255);
+}
+
+.logOutButton:hover {
+ 
+  opacity: 1;
+
+  color:rgb(255, 255, 255);
+}
+a .comment { display: none; }
+a:hover .replies { display: none; }
+a:hover .comment { display: inline; }
+
+
 
 .navbarStyle{
     font-size: 6vw;
     font-weight: 900;
     float:left;
-    background-color: white;
+   
     width: 100vw;
     height: 7vw;
     border-bottom: solid .5vh rgb(0, 0, 0);
-    background-color: rgb(204, 219, 233);
+    background-color: rgb(255, 255, 255);
     
 }
 .titleContainer{

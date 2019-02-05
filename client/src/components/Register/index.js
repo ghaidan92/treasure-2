@@ -112,7 +112,7 @@ class Register extends React.Component {
           onAfterOpen={this.afterOpenModal}
           onRequestClose={this.closeModal}
           style={customStyles}
-          contentLabel="Example Modal"
+         
         >
           <div className="registerModal">
             <button className="xButton" onClick={this.closeModal}>x</button>
