@@ -5,8 +5,7 @@ import ImageCard from "../ImageCard";
 const ImageList = (props) => {
     
     for (var i=0; i<props.itemObj.length; i++) {
-        console.log(i);
-        console.log(props.itemObj[i]);
+       
        
         
 
