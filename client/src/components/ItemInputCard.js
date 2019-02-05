@@ -108,6 +108,7 @@ class ItemInputCard extends React.Component {
                 itemPicture: body.s3Url  
             })
             this.handlePostItem();
+            this.closeModal();
             });
             
         });
@@ -182,7 +183,7 @@ class ItemInputCard extends React.Component {
 
 
                                 <button className="doneButtonLogIn" onClick={this.handleUploadImage} >Post Item</button>
-
+ 
                             </form>
                         </div>
                     </div>
