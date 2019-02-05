@@ -64,7 +64,7 @@ class LogIn extends React.Component {
         // take them to their profile page
         // alert("logged in");
         this.closeModal();
-        window.location.reload("/profile");
+        window.location.reload("/");
         // this.props.history.replace(`/profile`);
       })
       .catch(err => {

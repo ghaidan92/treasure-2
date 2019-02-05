@@ -68,7 +68,6 @@ app.post('/api/additem', isAuthenticated, (req, res) => {
 app.get('/api/getitem/:id', isAuthenticated, (req, res)=>{
   db.Item.findById(req.params.id)
   .then(data => {
-    console.log(data);
     if(data) {
       res.json(data);
     } else {
@@ -107,6 +106,12 @@ app.get('/api/allitems', (req, res) => {
   .catch(err => res.statusMessage(400).json(err))
 })
 
+app.get('/api/allusers', (req, res) => {
+  db.User.find({})
+    .populate("items")
+    .then(data => res.json(data))
+    .catch(err => res.statusMessage(400).json(err))
+});
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
@@ -126,6 +131,49 @@ app.use(function (err, req, res, next) {
     next(err);
   }
 });
+
+// start chat code
+var server = require('http').createServer(app);
+var io = require('socket.io').listen(server);
+users = [];
+connections = [];
+
+
+//Needs to verify user (socket.on(VERIFY_USER), Then connect with username)
+io.sockets.on('connection', function(socket){
+    connections.push(socket);
+    console.log("connected: %s sockets connected", connections.length);
+
+
+    //Disconnect
+    socket.on('disconnect', function(data){
+        // if(!socket.username) return;
+        users.splice(users.indexOf(socket.username), 1);
+        updateUsernames();
+        connections.splice(connections.indexOf(socket), 1);
+        console.log("Disconnected: %s sockets connected", connections.length);
+    });
+    
+
+    //send message
+    socket.on('send message', function(data){
+        // console.log(data)
+        io.sockets.emit('new message', {msg: data, user:socket.username})
+    });
+
+    //new user
+    socket.on('new user', function(data, callback){
+        callback(true);
+        socket.username = data;
+        users.push(socket.username);
+        updateUsernames();
+    });
+
+    function updateUsernames(){
+        io.sockets.emit('get users', users);
+    }
+});
+//end chat code
 
 // Send every request to the React app
 // Define any API routes before this runs
