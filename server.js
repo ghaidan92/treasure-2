@@ -8,6 +8,9 @@ const app = express();
 const db = require('./models');
 const PORT = process.env.PORT || 3001;
 
+var server = require('http').createServer(app);
+var io = require('socket.io').listen(server);
+
 // Setting CORS so that any website can
 // Access our API
 app.use((req, res, next) => {
@@ -133,8 +136,7 @@ app.use(function (err, req, res, next) {
 });
 
 // start chat code
-var server = require('http').createServer(app);
-var io = require('socket.io').listen(server);
+
 users = [];
 connections = [];
 
