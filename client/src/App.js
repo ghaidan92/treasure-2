@@ -32,7 +32,7 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <h2>Welcome!</h2>
+          <h2>Land Ho!</h2>
         </div>
         <HomeImageList users={this.state.items}/>
         {/* <p className="App-intro">
