@@ -35,13 +35,13 @@ class Navbar extends Component {
             return (
                 <ul className="navbar-nav">
                     <li className="nav-item">
-                        <Link className="nav-link profileButton" to="/profile"> <span class="replies">Profile</span>
-                            <span class="comment">🏝️</span></Link>
+                        <Link className="nav-link profileButton" to="/profile"> <span className="replies">Profile</span>
+                            <span className="comment">🏝️</span></Link>
                     </li>
                     <li className="nav-item">
                         {/* this is not using the Link component to logout or user and then refresh the application to the start */}
-                        <a className="nav-link logOutButton" href="/" onClick={() => this.Auth.logout()}> <span class="replies">Log Out</span>
-                            <span class="comment">&#9760;</span></a>
+                        <a className="nav-link logOutButton" href="/" onClick={() => this.Auth.logout()}> <span className="replies">Log Out</span>
+                            <span className="comment">&#9760;</span></a>
                     </li>
                 </ul>
             );

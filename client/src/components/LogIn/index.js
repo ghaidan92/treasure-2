@@ -62,9 +62,9 @@ class LogIn extends React.Component {
       .then(res => {
         // once user is logged in
         // take them to their profile page
-        // alert("logged in");
+        
+        window.location.replace("/");
         this.closeModal();
-        window.location.reload("/");
         // this.props.history.replace(`/profile`);
       })
       .catch(err => {
@@ -97,13 +97,14 @@ class LogIn extends React.Component {
 
   closeModal() {
     this.setState({ modalIsOpen: false });
+    
   }
 
   render() {
     return (
       <div>
         <button className="logInButton"  onClick={this.openModal}>   <span class="replies">Log In</span>
-    <span class="comment">🚣‍♂️</span></button>
+        <span className="comment">🚣‍♂️</span></button>
         <Modal
           isOpen={this.state.modalIsOpen}
           onAfterOpen={this.afterOpenModal}

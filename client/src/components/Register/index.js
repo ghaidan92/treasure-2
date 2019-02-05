@@ -106,7 +106,7 @@ class Register extends React.Component {
     return (
       <div>
         <button className="signUpButton" onClick={this.openModal}><span class="replies">Sign Up</span>
-    <span class="comment">&#9875;</span></button>
+        <span className="comment">&#9875;</span></button>
         <Modal
           isOpen={this.state.modalIsOpen}
           onAfterOpen={this.afterOpenModal}
