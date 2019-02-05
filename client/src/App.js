@@ -27,31 +27,21 @@ class App extends Component {
 
   }
 
-  handleLogout = () => {
-    Auth.logout();
-    this.props.history.replace('/signup');
-  };
-
-  goToEditProfile = () => {
-    this.props.history.replace('/profile');
-  };
-
   render() {
     // console.log(process.env.REACT_APP_SECRET_CODE);
     return (
       <div className="App">
         <div className="App-header">
-          
-          <h2>Welcome {this.props.user.email}</h2>
+          <h2>Welcome!</h2>
         </div>
         <HomeImageList users={this.state.items}/>
-        <p className="App-intro">
+        {/* <p className="App-intro">
           <button type="button" className="btn btn-primary" onClick={this.goToEditProfile}>Go to Profile</button>
           <button type="button" className="btn btn-danger" onClick={this.handleLogout}>Logout</button>
-        </p>
+        </p> */}
       </div>
     );
   }
 }
 
-export default withAuth(App);
+export default App;

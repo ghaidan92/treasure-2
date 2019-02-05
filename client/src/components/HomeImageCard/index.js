@@ -15,7 +15,6 @@ const HomeImageCard = (props) => {
                 </div>
             </div>
         );
-
     })
 
     return (
