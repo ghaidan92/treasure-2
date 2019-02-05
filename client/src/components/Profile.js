@@ -41,7 +41,6 @@ class Profile extends Component {
   render() {
 
     return (
-<<<<<<< HEAD
       <div className="container">
         <div className="Profile">
           <h1 className="headerProfile">Ye Profile</h1>
@@ -57,20 +56,6 @@ class Profile extends Component {
           userId={this.state.userId}
         />
         <ImageList itemObj={this.state.items} />
-=======
-      <div className="container Profile">
-        <h1>On the profile page!</h1>
-        <p>Username: {this.state.username}</p>
-        <p>Email: {this.state.email}</p>
-        <p></p>
-        <ItemInputCard
-          userId={this.state.userId}
-        />
-        <Link to="/">Go home</Link>
-
-        <ImageList itemObj={this.state.items} 
-        username={this.state.username}/>
->>>>>>> e4ec3de407fa04d6b3a92935e3c4aa0f1cfd6fe1
 
       </div>
     )

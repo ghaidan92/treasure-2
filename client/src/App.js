@@ -40,13 +40,6 @@ class App extends Component {
     // console.log(process.env.REACT_APP_SECRET_CODE);
     return (
       <div className="App">
-<<<<<<< HEAD
-       
-         
-          {/* <h2>Welcome {this.props.user.email}</h2> */}
-      
-     
-=======
         <div className="App-header">
           
           <h2>Welcome {this.props.user.email}</h2>
@@ -56,7 +49,6 @@ class App extends Component {
           <button type="button" className="btn btn-primary" onClick={this.goToEditProfile}>Go to Profile</button>
           <button type="button" className="btn btn-danger" onClick={this.handleLogout}>Logout</button>
         </p>
->>>>>>> e4ec3de407fa04d6b3a92935e3c4aa0f1cfd6fe1
       </div>
     );
   }
