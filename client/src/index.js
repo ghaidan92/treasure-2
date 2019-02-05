@@ -8,11 +8,7 @@ import { Route, BrowserRouter as Router } from 'react-router-dom';
 import axios from "axios";
 
 
-
-// Our Components
-// import Login from './components/Login';
 import Profile from './components/Profile';
-// import Signup from './components/Signup';
 import Navbar from './components/Navbar';
 
 // Here is if we have an id_token in localStorage

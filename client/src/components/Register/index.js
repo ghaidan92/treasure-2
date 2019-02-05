@@ -55,11 +55,15 @@ class Register extends React.Component {
     event.preventDefault();
     API.signUpUser(this.state.username, this.state.email, this.state.password, this.state.firstname, this.state.lastname, this.state.zipcode )
     .then(res=> {
-    // this.Auth.login(this.state.email, this.state.password)  
+      this.Auth.login(this.state.email, this.state.password).then(res => {
+        console.log(res.data);
+        window.location.replace("/");
+        this.closeModal();
+      })  
     
         // once the user has signed up
         // send them to the login page
-        this.closeModal();
+        
         // window.location.replace("/profile")
         // this.props.history.replace('/login');
       })
