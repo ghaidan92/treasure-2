@@ -3,8 +3,6 @@ import './imagecard.css'
 
 const ImageCard = (props) => {
 
-//TODO:
-// 1. Conditional rendering to show username if on homepage
     return (
         <div>
             <div className="card" key={props.itemName}>
