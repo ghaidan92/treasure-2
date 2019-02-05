@@ -1,0 +1,43 @@
+body{
+    background-color: rgb(204, 219, 233);
+}
+.Profile {
+   
+    font-size: 4vh;
+    font-weight: 600;
+}
+.headerProfile{
+    padding-top:19vh;
+    font-size: 6vh;
+    font-weight: 900;
+    
+}
+.profilePicture{
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    height:25vh;
+    width:15vw;
+    margin-bottom: 0vh;
+}
+
+.addPicture{
+    color:black;
+    font-size: .8vw;
+    
+    border: solid 3px;
+    border-radius: 20px;
+    font-weight: 900;
+    width:6vw;
+    margin-bottom: 1vh;
+    background-color: rgb(204, 219, 233);
+}
+
+.addPicture:hover {
+   
+    opacity: .8;
+
+    color:rgb(59, 49, 49);
+  }
+  button .comment { display: none; }
+  button:hover .replies { display: none; }
+  button:hover .comment { display: inline; }

@@ -7,14 +7,14 @@
         border-radius: 20px;
         font-weight: 900;
         width:11vw;
-        background-color: rgb(204, 219, 233);
+        background-color: rgb(255, 255, 255);
 }
 
 .signUpButton:hover {
    
     opacity: .8;
 
-    color:rgb(204, 219, 233);
+    color:rgb(255, 255, 255);
   }
   button .comment { display: none; }
   button:hover .replies { display: none; }
@@ -29,8 +29,6 @@
 
 .registerModal {
     z-index: 99;
-    width:70vw;
-    height:70vh;
     padding-left:3vw;
 
 
