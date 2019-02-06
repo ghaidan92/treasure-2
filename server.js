@@ -53,13 +53,14 @@ app.post('/api/login', (req, res) => {
 app.post('/api/additem', isAuthenticated, (req, res) => {
   db.Item.create(req.body)
     .then(dbItem => {
-      return db.User.findOneAndUpdate({}, { $push: { items: dbItem._id }}, { new :true});
+      return db.User.findOneAndUpdate({_id: dbItem.userId}, { $push: { items: dbItem._id }}, { new :true});
     })
     .then(dbUser =>{
       res.json(dbUser)
     })
     .catch(err => res.status(400).json(err));
 });
+
 app.get('/api/getitem/:id', isAuthenticated, (req, res)=>{
   db.Item.findById(req.params.id)
   .then(data => {
@@ -109,28 +110,7 @@ app.get('/api/allusers', (req, res) => {
     .catch(err => res.statusMessage(400).json(err))
 });
 
-//SEARCH ROUTE
-app.get("/api/search/:itemName", (req, res) => {
 
-  // db.Item.find({itemName: `${req.params.itemName}`})
-  // .then(data => {
-  //   console.log(req.params.itemName);
-  //   res.json(data);
-  // })
-
-
-  // // db.User.find({
-  // //   "items": { 
-  // //       "$elemMatch": {
-  // //           "itemName": req.params.itemName
-  // //       }
-  // //   }
-  // // })
-  // // .then(data => {
-  // //   res.json(data)
-  // // })
-
-})
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {

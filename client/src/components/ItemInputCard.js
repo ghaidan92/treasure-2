@@ -70,7 +70,6 @@ class ItemInputCard extends React.Component {
     }
     handleGetItem = (e) => {
         const { itemName, itemDescription, itemPicture, zipCode } = this.state;
-        
         const newItem = {
             itemName, 
             itemDescription,

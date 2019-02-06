@@ -45,8 +45,7 @@ class App extends Component {
     
     this.state.items.forEach(user => {
 
-      var newUserArr = []
-      var newItemArr = [];
+      
       var matched = false;
      
       user.items.forEach(item => {
