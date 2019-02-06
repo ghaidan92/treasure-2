@@ -33,8 +33,6 @@ mongoose.set('useCreateIndex', true);
 const isAuthenticated = exjwt({
   secret: 'all sorts of code up in here'
 });
-
-
 // LOGIN ROUTE
 app.post('/api/login', (req, res) => {
   db.User.findOne({
@@ -51,23 +49,17 @@ app.post('/api/login', (req, res) => {
     });
   }).catch(err => res.status(404).json({success: false, message: "User not found", error: err}));
 });
-
 //POST ITEMS ROUTE
 app.post('/api/additem', isAuthenticated, (req, res) => {
   db.Item.create(req.body)
     .then(dbItem => {
       return db.User.findOneAndUpdate({}, { $push: { items: dbItem._id }}, { new :true});
-      
     })
     .then(dbUser =>{
       res.json(dbUser)
     })
     .catch(err => res.status(400).json(err));
 });
-
-
-
-
 app.get('/api/getitem/:id', isAuthenticated, (req, res)=>{
   db.Item.findById(req.params.id)
   .then(data => {
@@ -112,14 +104,38 @@ app.get('/api/allitems', (req, res) => {
 app.get('/api/allusers', (req, res) => {
   db.User.find({})
     .populate("items")
-    .then(data => res.json(data))
+    .then(data => {
+      res.json(data)})
     .catch(err => res.statusMessage(400).json(err))
 });
+
+//SEARCH ROUTE
+app.get("/api/search/:itemName", (req, res) => {
+
+  // db.Item.find({itemName: `${req.params.itemName}`})
+  // .then(data => {
+  //   console.log(req.params.itemName);
+  //   res.json(data);
+  // })
+
+
+  // // db.User.find({
+  // //   "items": { 
+  // //       "$elemMatch": {
+  // //           "itemName": req.params.itemName
+  // //       }
+  // //   }
+  // // })
+  // // .then(data => {
+  // //   res.json(data)
+  // // })
+
+})
+
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
-
 
 app.get('/', isAuthenticated /* Using the express jwt MW here */, (req, res) => {
   res.send('You are authenticated'); //Sending some response when authenticated

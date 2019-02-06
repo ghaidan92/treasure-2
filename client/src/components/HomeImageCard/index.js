@@ -4,7 +4,7 @@ const HomeImageCard = (props) => {
 
     var Card = props.items.map(item => {
         return (
-            <div className="card" key={item.itemName}>
+            <div className="card">
                 <img className="card-img-top" src={item.itemPicture || "https://via.placeholder.com/350x350"} alt={props.itemName} />
                 <div className="card-body">
                     <h5 className="card-title">{item.itemName}</h5>

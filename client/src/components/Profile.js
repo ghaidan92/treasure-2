@@ -34,10 +34,6 @@ class Profile extends Component {
       })
   }
 
-
-
-
-
   render() {
 
     return (
@@ -51,6 +47,7 @@ class Profile extends Component {
           <p>Email: {this.state.email}</p>
           <p>Zipcode: {this.state.zipcode} </p>
         </div>
+        
         {/* <Link to="/">Go home</Link> */}
         <ItemInputCard
           userId={this.state.userId}
