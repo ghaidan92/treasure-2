@@ -25,25 +25,48 @@ class App extends Component {
     });
   }
 
+  isMatch = (item) => {
+    return item.itemName === this.state.search;
+  }
+  filter = (item) => {
+
+    if (item.itemName === this.state.search){
+    
+    }
+
+  }
   handleSearchSubmit = () => {
 
     this.setState({
       items: []
     })
-    
-    this.state.items.forEach(user => {
-      
-      user.items.forEach(item => {
-        if(this.state.search === item.itemName){
-          console.log(user)
-           console.log(item)
-          
-        }
-      })
 
   
+    
+    this.state.items.forEach(user => {
+
+      var newUserArr = []
+      var newItemArr = [];
+      var matched = false;
+     
+      user.items.forEach(item => {
+
+        if (user.items.filter(item => item.itemName === this.state.search)) {
+          var filtItems = user.items.filter(item => item.itemName === this.state.search);
+          matched = true;
+        }
+        user.items = filtItems;
+
+      })
+
+      console.log(user)
+
       
+        
+
     });
+
+    
   
   
   }

@@ -81,8 +81,8 @@ class AddPic extends React.Component {
   render() {
     return (
       <div>
-        <button className="addPicButton" onClick={this.openModal}><span class="replies">Add Pic</span>
-    <span class="comment">&#9875;</span></button>
+        <button className="addPicButton" onClick={this.openModal}><span className="replies">Add Pic</span>
+    <span className="comment">&#9875;</span></button>
         <Modal
           isOpen={this.state.modalIsOpen}
           onAfterOpen={this.afterOpenModal}
