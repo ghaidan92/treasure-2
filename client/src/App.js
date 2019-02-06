@@ -36,38 +36,39 @@ class App extends Component {
 
   }
   handleSearchSubmit = () => {
-
-    this.setState({
-      items: []
-    })
-
-  
     
-    this.state.items.forEach(user => {
+    var filArr = [];
 
-      
-      var matched = false;
-     
+    // if(filArr[0].items.length === 0){
+    //   this.componentDidMount();
+    // }
+
+    console.log(this.state);
+    if (this.state.items[0].items.length === 0){
+      alert("Sorry, nothing");
+    }
+    if (this.state.search) {
+      this.setState({
+        items: filArr
+      })
+    } else if (!this.state.search || this.state.search === ''){
+      this.componentDidMount();
+    } 
+    this.state.items.forEach(user => {     
       user.items.forEach(item => {
-
         if (user.items.filter(item => item.itemName === this.state.search)) {
           var filtItems = user.items.filter(item => item.itemName === this.state.search);
-          matched = true;
-        }
+       
+        } 
         user.items = filtItems;
-
-      })
-
-      console.log(user)
-
-      
         
+      })
+      filArr.push(user)  
+
 
     });
 
-    
-  
-  
+    console.log(filArr)
   }
 
   
@@ -82,6 +83,8 @@ class App extends Component {
 
   render() {
     // console.log(process.env.REACT_APP_SECRET_CODE);
+
+   
     return (
       <div className="App">
         <div className="App-header">
@@ -98,9 +101,16 @@ class App extends Component {
           >Search</button>
           </div>
         </div>
+        {!this.state.items &&
+          <h2>
+            Nothing was found!
+          </h2>
+        }
         <br></br>
         <br></br>
+        
         <HomeImageList users={this.state.items}/>
+      
       </div>
     );
   }
